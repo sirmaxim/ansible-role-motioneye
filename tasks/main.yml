@@ -1,0 +1,51 @@
+---
+# tasks file for motioneye
+- include: pkgs-{{ ansible_pkg_mgr }}.yml
+
+- name: add motioneye user
+  user:
+    name: "{{ motioneye_user }}"
+    system: yes
+    createhome: yes
+    home: "{{ motioneye_home }}"
+
+- name: Create log and media dir
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ motioneye_user }}"
+    mode: 0755
+  with_items:
+    - "{{ motioneye_home }}/motioneye/log"
+    - "{{ motioneye_home }}/motioneye/media"
+
+- name: Install motioneye
+  pip:
+    name: motioneye
+
+- name: copy motioneye config
+  template:
+    src: motioneye.conf.j2
+    dest: "{{ motioneye_home }}/motioneye/motioneye.conf"
+    owner: "{{ motioneye_user }}"
+    mode: 0644
+  notify: restart motioneye
+
+- name: create media directory
+  file:
+    path: /var/lib/motioneye
+    state: directory
+
+- name: Check if systemd is running
+  stat: path=/run/systemd/system
+  register: systemd
+
+- name: copy systemd service
+  template:
+    src: motioneye.systemd-unit-local.j2
+    dest: /etc/systemd/system/motioneye.service
+  when: systemd.stat.exists
+  notify: Reload systemd service file
+
+- name: enable motioneye
+  service: name=motioneye state=started enabled=yes

@@ -1,0 +1,9 @@
+---
+# handlers file for motioneye
+- name: Reload systemd service file
+  command: systemctl daemon-reload
+
+- name: restart motioneye
+  service:
+    name: motioneye
+    state: restarted

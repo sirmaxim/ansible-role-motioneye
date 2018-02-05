@@ -1,0 +1,10 @@
+[Unit]
+Description=motionEye Server
+
+[Service]
+ExecStart=/usr/local/bin/meyectl startserver -c {{ motioneye_home }}/motioneye/motioneye.conf
+User={{ motioneye_user }}
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target

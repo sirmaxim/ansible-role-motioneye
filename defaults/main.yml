@@ -1,0 +1,6 @@
+---
+# defaults file for motioneye
+motioneye_user: motioneye
+motioneye_home: /home/motioneye
+motioneye_port: 8765
+motioneye_listen: 0.0.0.0

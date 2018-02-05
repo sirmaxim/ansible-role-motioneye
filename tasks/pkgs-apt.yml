@@ -1,0 +1,17 @@
+---
+
+- name: Update cache
+  apt: update_cache=yes cache_valid_time=43200 #12 hours
+
+- name: Install deps
+  apt: pkg={{ item }} state=installed
+  with_items:
+    - motion
+    - ffmpeg
+    - v4l-utils
+    - python-pip
+    - python-dev
+    - curl
+    - libssl-dev
+    - libcurl4-openssl-dev
+    - libjpeg-dev

@@ -1,0 +1,15 @@
+galaxy_info:
+  author: Matt Whitehead
+  description: Deploys MotionEye IP camera control panel
+  license: MIT
+  min_ansible_version: 1.9
+  platforms:
+    - name: Ubuntu
+      versions:
+      - xenial
+  galaxy_tags:
+    - motion
+    - security
+    - video
+    - web
+dependencies: []

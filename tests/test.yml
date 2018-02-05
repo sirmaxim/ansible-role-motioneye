@@ -1,0 +1,10 @@
+---
+- hosts: localhost
+  remote_user: root
+  vars:
+    motioneye_user: motioneye
+    motioneye_home: /home/motioneye
+    motioneye_port: 8765
+    motioneye_listen: 0.0.0.0
+  roles:
+    - motioneye
