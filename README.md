@@ -1,5 +1,6 @@
 Ansible-MotionEye
 =========
+[![Build Status](https://travis-ci.org/sirmaxim/ansible-role-motioneye.svg?branch=master)](https://travis-ci.org/sirmaxim/ansible-role-motioneye)
 
 This role will deploy [motioneye](https://github.com/ccrisan/motioneye/) on a server and has been tested on Ubuntu 16.04.
 
