@@ -4,7 +4,7 @@
   apt: update_cache=yes cache_valid_time=43200 #12 hours
 
 - name: Install deps
-  apt: pkg={{ item }} state=installed
+  apt: pkg={{ item }} state=present
   with_items:
     - motion
     - ffmpeg
